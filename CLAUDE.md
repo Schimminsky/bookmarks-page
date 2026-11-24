@@ -4,7 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-Early stage: no source code, build file, or tests exist yet. Only `README.md`, `.gitignore`, and an untracked `plan.md` (written in German) are present. Update this file with real build/test/run commands once a project structure (e.g. `project.clj` or `deps.edn`) is in place. Don't assume one yet.
+Early stage: a Leiningen `app` skeleton is in place (`project.clj`, `src/bookmarks_page/core.clj`, `test/bookmarks_page/core_test.clj`) with Ring/Jetty (`ring/ring-jetty-adapter`) as a dependency. `-main` still only prints "Hello, World!". The owner is writing the first Ring handler and server start themselves. `plan.md` (German) describes the scope.
+
+Commands:
+- `lein repl`: start the REPL (writes `.nrepl-port` for Conjure)
+- `lein run`: run `-main`
+- `lein test`: run all tests. Run a single namespace with `lein test bookmarks-page.core-test`. The template test `a-test` fails on purpose (`(is (= 0 1))`) until it's replaced.
 
 ## Purpose
 
@@ -13,5 +18,5 @@ A personal website for storing bookmarks, meant to clean up the browser sidebar.
 ## How to work in this repo
 
 - **The main goal is for the owner to learn programming.** The owner wants to write the code themselves and use Claude only when they're stuck. Claude may help with the initial project setup. After that, prefer explanations, hints, and small targeted fixes over writing whole features, unless the owner explicitly asks for more.
-- **Language: Clojure, built with the Clojure CLI (`deps.edn`), not Leiningen.** The `.gitignore` still contains Leiningen entries from the template, but you can ignore them.
-- **Editor: Neovim** with Conjure (REPL evaluation, localleader `,`) and nvim-paredit. Conjure connects through `.nrepl-port`, so the project should provide an nREPL alias in `deps.edn` (nrepl + cider-nrepl middleware). For "how do I do this in Neovim" questions, the user-level `nvim-howto` skill applies.
+- **Language: Clojure, built with Leiningen (`project.clj`), not the Clojure CLI (`deps.edn`).** The Leiningen entries in `.gitignore` are therefore relevant.
+- **Editor: Neovim** with Conjure (REPL evaluation, localleader `,`) and nvim-paredit. Conjure connects through `.nrepl-port`, which `lein repl` writes automatically. The cider-nrepl middleware is enabled globally in `~/.lein/profiles.clj`, so `project.clj` doesn't need it. For "how do I do this in Neovim" questions, the user-level `nvim-howto` skill applies.
