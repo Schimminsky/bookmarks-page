@@ -1,0 +1,1 @@
+["^ ","~$my-add",["^ ","~:row",3,"~:col",1,"~:macro",true,"~:fixed-arities",["~#set",[2]],"~:name","^0","~:ns","~$suitable.test-macros","~:top-ns","^8"],"~$my-sub",["^ ","^1",8,"^2",1,"^3",true,"^4",["^5",[2]],"^6","^:","^7","^8","^9","^8"],"~:filename","/home/jleminsk/.m2/repository/org/rksm/suitable/0.8.0/suitable-0.8.0.jar:suitable/test_macros.clj"]
